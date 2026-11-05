@@ -1,0 +1,29 @@
+{
+  "active": true,
+  "timezone": "Asia/Bangkok",
+  "forecast_days": 8,
+  "hourly": ["temperature_2m", "precipitation"],
+  "models": [
+    "ecmwf_ifs025",
+    "ecmwf_aifs025_single",
+    "gfs_seamless",
+    "icon_seamless",
+    "gem_seamless",
+    "jma_seamless",
+    "ukmo_seamless",
+    "meteofrance_seamless",
+    "cma_grapes_global"
+  ],
+  "points": {
+    "ha_giang": [22.8149, 104.9818],
+    "quan_ba": [23.0651, 104.9923],
+    "quan_ba_valley": [23.0693, 105.0284],
+    "yen_minh": [23.1172, 105.1491],
+    "dong_van": [23.2797, 105.3608],
+    "high_road": [23.3395, 105.2854],
+    "ma_pi_leng": [23.2406, 105.4121],
+    "meo_vac": [23.1633, 105.4104],
+    "du_gia": [22.9292, 105.2268],
+    "hanoi": [21.029, 105.832]
+  }
+}
