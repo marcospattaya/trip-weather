@@ -2,13 +2,14 @@ name: Fetch forecast
 
 on:
   schedule:
-    # 04:40, 11:40 and 17:40 in Vietnam and Thailand (UTC+7). GitHub can start these a few minutes late.
+    # 04:40, 11:40 and 17:40 in Vietnam and Thailand (UTC+7). GitHub can start these hours late,
+    # so a push to refresh.txt also starts a run.
     - cron: "40 21 * * *"
     - cron: "40 4 * * *"
     - cron: "40 10 * * *"
   push:
     branches: [main]
-    paths: ["points.json", "fetch.py", ".github/workflows/fetch.yml"]
+    paths: ["points.json", "fetch.py", "refresh.txt", ".github/workflows/fetch.yml"]
   workflow_dispatch:
 
 permissions:
@@ -33,4 +34,5 @@ jobs:
           git add -A data
           git diff --cached --quiet && exit 0
           git commit -m "Forecast $(date -u +%Y-%m-%dT%H:%MZ)"
+          git pull --rebase -q
           git push
