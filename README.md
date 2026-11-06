@@ -1,6 +1,6 @@
 # trip-weather
 
-Three times a day (04:40, 11:40 and 17:40, UTC+7) a GitHub Action fetches hourly forecasts from nine
+Every hour a GitHub Action fetches hourly forecasts from nine
 global models for the places in `points.json` and saves them to `data/latest.json`:
 ECMWF, ECMWF AI, GFS, ICON, GEM, JMA, UK Met Office, ARPEGE and CMA, all through [Open-Meteo](https://open-meteo.com)
 (data CC BY 4.0). The short-range models stop after a few days, so later days use fewer of them.

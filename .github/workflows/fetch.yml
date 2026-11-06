@@ -2,11 +2,9 @@ name: Fetch forecast
 
 on:
   schedule:
-    # 04:40, 11:40 and 17:40 in Vietnam and Thailand (UTC+7). GitHub can start these hours late,
-    # so a push to refresh.txt also starts a run.
-    - cron: "40 21 * * *"
-    - cron: "40 4 * * *"
-    - cron: "40 10 * * *"
+    # Every hour at :40. GitHub starts timed runs on this repo hours late, so an hourly
+    # schedule keeps data/latest.json fresh anyway. A push to refresh.txt also starts a run.
+    - cron: "40 * * * *"
   push:
     branches: [main]
     paths: ["points.json", "fetch.py", "refresh.txt", ".github/workflows/fetch.yml"]
