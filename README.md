@@ -11,3 +11,4 @@ models show rain), given the riding windows in a separate `trip.json` that is no
 - Pause it: set `"active": false` in `points.json`.
 - Next trip: change the places in `points.json`.
 - Run it now: Actions tab, "Fetch forecast", "Run workflow".
+- Or push a change to `refresh.txt` (GitHub can start the timed runs hours late).
