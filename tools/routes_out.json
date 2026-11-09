@@ -1,121 +1,4 @@
 {
- "geocode": {
-  "Xín Cái": [],
-  "Thượng Phùng": [],
-  "Sơn Vĩ": [
-   {
-    "name": "Xã Sơn Vĩ, Tỉnh Tuyên Quang, Việt Nam",
-    "lat": 23.2466028,
-    "lon": 105.4695338,
-    "type": "administrative",
-    "class": "boundary"
-   }
-  ],
-  "Niêm Sơn": [
-   {
-    "name": "Xã Niêm Sơn, Tỉnh Tuyên Quang, Việt Nam",
-    "lat": 23.0365596,
-    "lon": 105.4210151,
-    "type": "administrative",
-    "class": "boundary"
-   }
-  ],
-  "Lũng Pù": [
-   {
-    "name": "Pù Trừ Lủng, Sủng Là, Xã Sà Phìn, Tỉnh Tuyên Quang, Việt Nam",
-    "lat": 23.2401385,
-    "lon": 105.2141333,
-    "type": "hamlet",
-    "class": "place"
-   }
-  ],
-  "Khâu Vai": [
-   {
-    "name": "Xã Khâu Vai, Tỉnh Tuyên Quang, Việt Nam",
-    "lat": 23.1138379,
-    "lon": 105.4805811,
-    "type": "administrative",
-    "class": "boundary"
-   },
-   {
-    "name": "Khau Vai, Xã Khâu Vai, Tỉnh Tuyên Quang, Việt Nam",
-    "lat": 23.0861656,
-    "lon": 105.4867496,
-    "type": "suburb",
-    "class": "place"
-   }
-  ],
-  "Lũng Phìn": [
-   {
-    "name": "Xã Lũng Phìn, Tỉnh Tuyên Quang, Việt Nam",
-    "lat": 23.135412,
-    "lon": 105.2792054,
-    "type": "administrative",
-    "class": "boundary"
-   }
-  ],
-  "Pải Lủng": [
-   {
-    "name": "Pai Lung Cave, Quốc lộ 4C, Xóm Mới, Sì Phài, Tả Lủng, Xã Đồng Văn, Tỉnh Tuyên Quang, Việt Nam",
-    "lat": 23.2547743,
-    "lon": 105.3867757,
-    "type": "cave_entrance",
-    "class": "natural"
-   }
-  ],
-  "Tát Ngà": [
-   {
-    "name": "Xã Tát Ngà, Tỉnh Tuyên Quang, Việt Nam",
-    "lat": 23.0868802,
-    "lon": 105.3662019,
-    "type": "administrative",
-    "class": "boundary"
-   }
-  ],
-  "Pả Vi": [
-   {
-    "name": "Pa Vi, Quốc lộ 4C, Xã Mèo Vạc, Tỉnh Tuyên Quang, Việt Nam",
-    "lat": 23.2063053,
-    "lon": 105.4166687,
-    "type": "theme_park",
-    "class": "tourism"
-   }
-  ],
-  "Niêm Tòng": [
-   {
-    "name": "Đài tưởng niệm liệt sĩ, Lý Thường Kiệt, Đồng Tâm, Xã Đồng Văn, Tỉnh Tuyên Quang, Việt Nam",
-    "lat": 23.2794007,
-    "lon": 105.3693581,
-    "type": "memorial",
-    "class": "historic"
-   }
-  ],
-  "Nậm Ban": [
-   {
-    "name": "Xã Nam Quang, Tỉnh Cao Bằng, Việt Nam",
-    "lat": 22.919612,
-    "lon": 105.4293496,
-    "type": "administrative",
-    "class": "boundary"
-   },
-   {
-    "name": "Nam Cao, Xã Nam Quang, Tỉnh Cao Bằng, Việt Nam",
-    "lat": 22.9803625,
-    "lon": 105.413724,
-    "type": "suburb",
-    "class": "place"
-   }
-  ],
-  "Sủng Máng": [
-   {
-    "name": "Xã Sủng Máng, Tỉnh Tuyên Quang, Việt Nam",
-    "lat": 23.164516,
-    "lon": 105.3186641,
-    "type": "administrative",
-    "class": "boundary"
-   }
-  ]
- },
  "routes": {
   "base": {
    "via": [
@@ -142,112 +25,124 @@
     "ĐT.176 | Đường Nguyễn Thị Minh Khai": 1.0
    }
   },
-  "border_xincai_first": {
-   "skipped": [
-    "Xín Cái",
-    "Thượng Phùng"
-   ]
+  "base_with_boat_road": {
+   "via": [
+    "dongvan",
+    "mapileng",
+    "tusan_dock",
+    "mapileng",
+    "meovac",
+    "mauque",
+    "dugia"
+   ],
+   "km": 121.2,
+   "osrm_h": 3.36,
+   "legs_km": [
+    11.3,
+    9.0,
+    10.4,
+    12.0,
+    35.7,
+    42.7
+   ],
+   "roads_km": {
+    " | ": 46.5,
+    "ĐT.176 | Đường tỉnh 176": 35.1,
+    "QL.4C | Quốc lộ 4C": 32.1,
+    "TL176 | TL 176": 4.6,
+    "QL.4C | Đường 19 Tháng 8": 1.8,
+    "ĐT.176 | Đường Nguyễn Thị Minh Khai": 1.0
+   }
   },
-  "border_pailung_first": {
-   "skipped": [
-    "Thượng Phùng",
-    "Xín Cái"
-   ]
-  },
-  "border_out_back": {
-   "skipped": [
-    "Xín Cái"
-   ]
-  },
-  "son_vi": {
-   "skipped": [
-    "Thượng Phùng",
-    "Xín Cái"
-   ]
-  },
-  "niem_son": {
+  "sonvi_out_back": {
    "via": [
     "dongvan",
     "mapileng",
     "meovac",
-    "Niêm Sơn",
+    "sonvi",
+    "meovac",
+    "mauque",
     "dugia"
    ],
-   "km": 175.2,
-   "osrm_h": 2.32,
+   "km": 157.3,
+   "osrm_h": 4.27,
    "legs_km": [
     11.3,
     10.9,
-    24.1,
-    128.9
+    28.3,
+    28.2,
+    35.7,
+    42.7
    ],
    "roads_km": {
-    "QL.4C | Quốc lộ 4C": 70.2,
-    "QL.34 | Quốc lộ 34": 66.2,
-    " | TL 176": 36.4,
-    "QL.4C | Đường 19 Tháng 8": 1.8
+    " | ": 83.2,
+    "ĐT.176 | Đường tỉnh 176": 35.1,
+    "QL.4C | Quốc lộ 4C": 31.4,
+    "TL176 | TL 176": 4.6,
+    "QL.4C | Đường 19 Tháng 8": 1.8,
+    "ĐT.176 | Đường Nguyễn Thị Minh Khai": 1.0
    }
   },
-  "khau_vai_niem_son": {
+  "sonvi_from_mapileng": {
    "via": [
     "dongvan",
     "mapileng",
+    "sonvi",
     "meovac",
-    "Khâu Vai",
-    "Niêm Sơn",
+    "mauque",
     "dugia"
    ],
-   "km": 214.2,
-   "osrm_h": 3.44,
+   "km": 146.2,
+   "osrm_h": 4.14,
    "legs_km": [
     11.3,
-    10.9,
-    18.8,
-    44.3,
-    128.9
+    28.2,
+    28.2,
+    35.7,
+    42.7
    ],
    "roads_km": {
-    "QL.4C | Quốc lộ 4C": 70.2,
-    "QL.34 | Quốc lộ 34": 66.2,
-    " | TL 176": 36.4,
-    " | TL 217": 30.3,
-    " | ": 9.1,
-    "QL.4C | Đường 19 Tháng 8": 1.8
+    " | ": 83.2,
+    "ĐT.176 | Đường tỉnh 176": 35.1,
+    "QL.4C | Quốc lộ 4C": 20.4,
+    "TL176 | TL 176": 4.6,
+    "QL.4C | Đường 19 Tháng 8": 1.8,
+    "ĐT.176 | Đường Nguyễn Thị Minh Khai": 1.0
    }
   },
-  "lung_pu_niem_son": {
+  "sonvi_via_tusan": {
    "via": [
     "dongvan",
-    "mapileng",
+    "tusan_dock",
+    "sonvi",
     "meovac",
-    "Lũng Pù",
-    "Niêm Sơn",
+    "mauque",
     "dugia"
    ],
-   "km": 267.0,
-   "osrm_h": 3.58,
+   "km": 148.3,
+   "osrm_h": 4.27,
    "legs_km": [
-    11.3,
-    10.9,
-    46.6,
-    69.2,
-    128.9
+    20.4,
+    21.2,
+    28.2,
+    35.7,
+    42.7
    ],
    "roads_km": {
-    "QL.4C | Quốc lộ 4C": 147.8,
-    "QL.34 | Quốc lộ 34": 66.2,
-    " | TL 176": 36.4,
-    " | ": 6.1,
-    "QL.4C | Đường 19 Tháng 8": 5.3,
-    "QL.4C | Đường 3 Tháng 2": 4.9
+    " | ": 85.3,
+    "ĐT.176 | Đường tỉnh 176": 35.1,
+    "QL.4C | Quốc lộ 4C": 20.4,
+    "TL176 | TL 176": 4.6,
+    "QL.4C | Đường 19 Tháng 8": 1.8,
+    "ĐT.176 | Đường Nguyễn Thị Minh Khai": 1.0
    }
   },
-  "niem_son_mauque": {
+  "niemson_mauque": {
    "via": [
     "dongvan",
     "mapileng",
     "meovac",
-    "Niêm Sơn",
+    "niemson",
     "mauque",
     "dugia"
    ],
@@ -264,6 +159,91 @@
     "QL.4C | Quốc lộ 4C": 68.9,
     " | ": 37.8,
     "ĐT.176 | Đường tỉnh 176": 35.1,
+    "TL176 | TL 176": 4.6,
+    "QL.4C | Đường 19 Tháng 8": 1.8,
+    "ĐT.176 | Đường Nguyễn Thị Minh Khai": 1.0
+   }
+  },
+  "tatnga_mauque": {
+   "via": [
+    "dongvan",
+    "mapileng",
+    "meovac",
+    "tatnga",
+    "mauque",
+    "dugia"
+   ],
+   "km": 138.3,
+   "osrm_h": 5.04,
+   "legs_km": [
+    11.3,
+    10.9,
+    31.2,
+    42.2,
+    42.7
+   ],
+   "roads_km": {
+    " | ": 77.1,
+    "QL.4C | Quốc lộ 4C": 34.5,
+    "ĐT.176 | Đường tỉnh 176": 20.2,
+    "TL176 | TL 176": 4.6,
+    "QL.4C | Đường 19 Tháng 8": 1.8
+   }
+  },
+  "khauvai_niemson_mauque": {
+   "via": [
+    "dongvan",
+    "mapileng",
+    "meovac",
+    "khauvai",
+    "niemson",
+    "mauque",
+    "dugia"
+   ],
+   "km": 188.3,
+   "osrm_h": 4.61,
+   "legs_km": [
+    11.3,
+    10.9,
+    18.8,
+    44.8,
+    59.8,
+    42.7
+   ],
+   "roads_km": {
+    "QL.4C | Quốc lộ 4C": 68.9,
+    " | ": 46.4,
+    "ĐT.176 | Đường tỉnh 176": 35.1,
+    " | TL 217": 30.3,
+    "TL176 | TL 176": 4.6,
+    "QL.4C | Đường 19 Tháng 8": 1.8,
+    "ĐT.176 | Đường Nguyễn Thị Minh Khai": 1.0
+   }
+  },
+  "sungmang_lungphin": {
+   "via": [
+    "dongvan",
+    "mapileng",
+    "meovac",
+    "sungmang",
+    "lungphin",
+    "mauque",
+    "dugia"
+   ],
+   "km": 102.9,
+   "osrm_h": 3.0,
+   "legs_km": [
+    11.3,
+    10.9,
+    13.7,
+    6.3,
+    17.9,
+    42.7
+   ],
+   "roads_km": {
+    " | ": 39.9,
+    "ĐT.176 | Đường tỉnh 176": 35.1,
+    "QL.4C | Quốc lộ 4C": 20.4,
     "TL176 | TL 176": 4.6,
     "QL.4C | Đường 19 Tháng 8": 1.8,
     "ĐT.176 | Đường Nguyễn Thị Minh Khai": 1.0
