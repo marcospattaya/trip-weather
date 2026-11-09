@@ -1,75 +1,66 @@
 #!/usr/bin/env python3
-"""One-off helper: road distances for detour options between Dong Van and Du Gia.
+"""One-off helper: geometry and elevation profile for the new Day 3 (Dong Van -> Son Vi loop -> Du Gia).
 
-Geocodes villages with Nominatim and routes with the public OSRM server, then
-prints JSON (distance, OSRM time, roads used) for each candidate itinerary.
+Routes with the public OSRM server, samples the line every 250 m and asks the
+Open-Meteo elevation API (Copernicus 90 m DEM) for each sample. Prints JSON.
 """
 import json
+import math
 import time
-import urllib.parse
 import urllib.request
 
 UA = "trip-weather-routes/1.0 (github.com/marcospattaya/trip-weather)"
-FIXED = {
-    "dongvan": (23.27967, 105.36078), "mapileng": (23.24062, 105.41208),
-    "meovac": (23.16332, 105.41044), "mauque": (23.06559, 105.23774),
-    "dugia": (22.9292, 105.2268),
-}
-PLACES = ["Xín Cái", "Thượng Phùng", "Sơn Vĩ", "Niêm Sơn", "Lũng Pù", "Khâu Vai",
-          "Lũng Phìn", "Pải Lủng", "Tát Ngà", "Pả Vi", "Niêm Tòng", "Nậm Ban", "Sủng Máng"]
+STOPS = [("dongvan", 23.27967, 105.36078), ("mapileng", 23.24062, 105.41208), ("dock", 23.23088, 105.42662),
+         ("sonvi", 23.2466, 105.4695), ("pavi", 23.21008, 105.41633), ("meovac", 23.16332, 105.41044),
+         ("mauque", 23.06559, 105.23774), ("dugia", 22.9292, 105.2268)]
 
 
 def get(url):
     req = urllib.request.Request(url, headers={"User-Agent": UA})
-    with urllib.request.urlopen(req, timeout=60) as r:
+    with urllib.request.urlopen(req, timeout=90) as r:
         return json.loads(r.read().decode("utf-8"))
 
 
-def geocode(name):
-    q = urllib.parse.urlencode({"q": name, "countrycodes": "vn", "format": "jsonv2", "limit": 5,
-                                "viewbox": "105.10,23.45,105.60,22.85", "bounded": 1})
-    try:
-        res = get("https://nominatim.openstreetmap.org/search?" + q)
-    except Exception as e:
-        return {"error": str(e)}
-    time.sleep(1.2)
-    return [{"name": h.get("display_name"), "lat": float(h["lat"]), "lon": float(h["lon"]),
-             "type": h.get("type"), "class": h.get("category") or h.get("class")} for h in res]
-
-
-def route(points):
-    coords = ";".join(f"{lon},{lat}" for lat, lon in points)
-    url = ("https://router.project-osrm.org/route/v1/driving/" + coords +
-           "?overview=false&steps=true&annotations=false")
-    r = get(url)
-    if r.get("code") != "Ok":
-        return {"error": r.get("code")}
-    rt = r["routes"][0]
-    roads = {}
-    for leg in rt["legs"]:
-        for s in leg["steps"]:
-            key = (s.get("ref") or "") + " | " + (s.get("name") or "")
-            roads[key] = roads.get(key, 0) + s["distance"]
-    return {"km": round(rt["distance"] / 1000, 1), "osrm_h": round(rt["duration"] / 3600, 2),
-            "legs_km": [round(l["distance"] / 1000, 1) for l in rt["legs"]],
-            "roads_km": {k: round(v / 1000, 1) for k, v in sorted(roads.items(), key=lambda kv: -kv[1]) if v > 500}}
-
-
-def steps(points):
-    coords = ";".join(f"{lon},{lat}" for lat, lon in points)
-    r = get("https://router.project-osrm.org/route/v1/driving/" + coords + "?overview=false&steps=true")
-    out = []
-    for i, leg in enumerate(r["routes"][0]["legs"]):
-        for s in leg["steps"]:
-            out.append({"leg": i, "km": round(s["distance"] / 1000, 2), "mode": s.get("mode"), "name": s.get("name"),
-                        "ref": s.get("ref"), "type": s["maneuver"].get("type"),
-                        "at": [round(s["maneuver"]["location"][1], 5), round(s["maneuver"]["location"][0], 5)]})
-    return out
+def hav(a, b):
+    R = 6371.0
+    la1, lo1, la2, lo2 = map(math.radians, (a[0], a[1], b[0], b[1]))
+    h = math.sin((la2 - la1) / 2) ** 2 + math.cos(la1) * math.cos(la2) * math.sin((lo2 - lo1) / 2) ** 2
+    return 2 * R * math.asin(math.sqrt(h))
 
 
 def main():
-    dock, sonvi, meovac = (23.23088, 105.42662), (23.2466, 105.4695), (23.16332, 105.41044)
-    print(json.dumps({"dock_to_sonvi_to_meovac": steps([dock, sonvi, meovac])}, ensure_ascii=False, indent=1))
+    coords = ";".join(f"{lon},{lat}" for _, lat, lon in STOPS)
+    r = get("https://router.project-osrm.org/route/v1/driving/" + coords + "?overview=full&geometries=geojson&steps=false")
+    rt = r["routes"][0]
+    line = [(c[1], c[0]) for c in rt["geometry"]["coordinates"]]
+    # resample every 250 m
+    samples, carry = [(0.0, line[0])], 0.0
+    dist = 0.0
+    step = 0.25
+    nxt = step
+    for a, b in zip(line, line[1:]):
+        seg = hav(a, b)
+        while seg > 0 and dist + seg >= nxt:
+            t = (nxt - dist) / seg
+            samples.append((nxt, (a[0] + t * (b[0] - a[0]), a[1] + t * (b[1] - a[1]))))
+            nxt += step
+        dist += seg
+    samples.append((dist, line[-1]))
+    elev = []
+    for i in range(0, len(samples), 100):
+        chunk = samples[i:i + 100]
+        lat = ",".join(f"{p[1][0]:.5f}" for p in chunk)
+        lon = ",".join(f"{p[1][1]:.5f}" for p in chunk)
+        e = get(f"https://api.open-meteo.com/v1/elevation?latitude={lat}&longitude={lon}")
+        elev += e["elevation"]
+        time.sleep(1)
+    print(json.dumps({
+        "km": round(rt["distance"] / 1000, 1), "osrm_h": round(rt["duration"] / 3600, 2),
+        "legs_km": [round(l["distance"] / 1000, 1) for l in rt["legs"]],
+        "stops": [s[0] for s in STOPS],
+        "line": [[round(a, 5), round(b, 5)] for a, b in line],
+        "profile": [[round(k, 2), round(z)] for (k, _), z in zip(samples, elev)],
+    }))
 
 
 if __name__ == "__main__":
