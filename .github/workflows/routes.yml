@@ -1,0 +1,32 @@
+name: Route options
+
+on:
+  push:
+    branches: [main]
+    paths: ["tools/routes.py", ".github/workflows/routes.yml"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: routes
+  cancel-in-progress: false
+
+jobs:
+  routes:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Work out the options
+        run: python3 tools/routes.py > tools/routes_out.json
+      - name: Save them
+        run: |
+          git config user.name "trip-weather"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add tools/routes_out.json
+          git diff --cached --quiet && exit 0
+          git commit -m "Route options $(date -u +%Y-%m-%dT%H:%MZ)"
+          git pull --rebase -q
+          git push
