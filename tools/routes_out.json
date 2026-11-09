@@ -1,253 +1,268 @@
 {
- "routes": {
-  "base": {
-   "via": [
-    "dongvan",
-    "mapileng",
-    "meovac",
-    "mauque",
-    "dugia"
-   ],
-   "km": 100.7,
-   "osrm_h": 2.9,
-   "legs_km": [
-    11.3,
-    10.9,
-    35.7,
-    42.7
-   ],
-   "roads_km": {
-    " | ": 37.7,
-    "ĐT.176 | Đường tỉnh 176": 35.1,
-    "QL.4C | Quốc lộ 4C": 20.4,
-    "TL176 | TL 176": 4.6,
-    "QL.4C | Đường 19 Tháng 8": 1.8,
-    "ĐT.176 | Đường Nguyễn Thị Minh Khai": 1.0
-   }
+ "dock_to_sonvi_to_meovac": [
+  {
+   "leg": 0,
+   "km": 4.43,
+   "mode": "driving",
+   "name": "",
+   "ref": null,
+   "type": "depart",
+   "at": [
+    23.22935,
+    105.42548
+   ]
   },
-  "base_with_boat_road": {
-   "via": [
-    "dongvan",
-    "mapileng",
-    "tusan_dock",
-    "mapileng",
-    "meovac",
-    "mauque",
-    "dugia"
-   ],
-   "km": 121.2,
-   "osrm_h": 3.36,
-   "legs_km": [
-    11.3,
-    9.0,
-    10.4,
-    12.0,
-    35.7,
-    42.7
-   ],
-   "roads_km": {
-    " | ": 46.5,
-    "ĐT.176 | Đường tỉnh 176": 35.1,
-    "QL.4C | Quốc lộ 4C": 32.1,
-    "TL176 | TL 176": 4.6,
-    "QL.4C | Đường 19 Tháng 8": 1.8,
-    "ĐT.176 | Đường Nguyễn Thị Minh Khai": 1.0
-   }
+  {
+   "leg": 0,
+   "km": 1.75,
+   "mode": "driving",
+   "name": "",
+   "ref": null,
+   "type": "end of road",
+   "at": [
+    23.2223,
+    105.44778
+   ]
   },
-  "sonvi_out_back": {
-   "via": [
-    "dongvan",
-    "mapileng",
-    "meovac",
-    "sonvi",
-    "meovac",
-    "mauque",
-    "dugia"
-   ],
-   "km": 157.3,
-   "osrm_h": 4.27,
-   "legs_km": [
-    11.3,
-    10.9,
-    28.3,
-    28.2,
-    35.7,
-    42.7
-   ],
-   "roads_km": {
-    " | ": 83.2,
-    "ĐT.176 | Đường tỉnh 176": 35.1,
-    "QL.4C | Quốc lộ 4C": 31.4,
-    "TL176 | TL 176": 4.6,
-    "QL.4C | Đường 19 Tháng 8": 1.8,
-    "ĐT.176 | Đường Nguyễn Thị Minh Khai": 1.0
-   }
+  {
+   "leg": 0,
+   "km": 2.53,
+   "mode": "driving",
+   "name": "",
+   "ref": null,
+   "type": "turn",
+   "at": [
+    23.22374,
+    105.45246
+   ]
   },
-  "sonvi_from_mapileng": {
-   "via": [
-    "dongvan",
-    "mapileng",
-    "sonvi",
-    "meovac",
-    "mauque",
-    "dugia"
-   ],
-   "km": 146.2,
-   "osrm_h": 4.14,
-   "legs_km": [
-    11.3,
-    28.2,
-    28.2,
-    35.7,
-    42.7
-   ],
-   "roads_km": {
-    " | ": 83.2,
-    "ĐT.176 | Đường tỉnh 176": 35.1,
-    "QL.4C | Quốc lộ 4C": 20.4,
-    "TL176 | TL 176": 4.6,
-    "QL.4C | Đường 19 Tháng 8": 1.8,
-    "ĐT.176 | Đường Nguyễn Thị Minh Khai": 1.0
-   }
+  {
+   "leg": 0,
+   "km": 0.22,
+   "mode": "driving",
+   "name": "",
+   "ref": null,
+   "type": "new name",
+   "at": [
+    23.22153,
+    105.46081
+   ]
   },
-  "sonvi_via_tusan": {
-   "via": [
-    "dongvan",
-    "tusan_dock",
-    "sonvi",
-    "meovac",
-    "mauque",
-    "dugia"
-   ],
-   "km": 148.3,
-   "osrm_h": 4.27,
-   "legs_km": [
-    20.4,
-    21.2,
-    28.2,
-    35.7,
-    42.7
-   ],
-   "roads_km": {
-    " | ": 85.3,
-    "ĐT.176 | Đường tỉnh 176": 35.1,
-    "QL.4C | Quốc lộ 4C": 20.4,
-    "TL176 | TL 176": 4.6,
-    "QL.4C | Đường 19 Tháng 8": 1.8,
-    "ĐT.176 | Đường Nguyễn Thị Minh Khai": 1.0
-   }
+  {
+   "leg": 0,
+   "km": 8.42,
+   "mode": "driving",
+   "name": "",
+   "ref": null,
+   "type": "turn",
+   "at": [
+    23.21991,
+    105.46164
+   ]
   },
-  "niemson_mauque": {
-   "via": [
-    "dongvan",
-    "mapileng",
-    "meovac",
-    "niemson",
-    "mauque",
-    "dugia"
-   ],
-   "km": 149.3,
-   "osrm_h": 3.49,
-   "legs_km": [
-    11.3,
-    10.9,
-    24.6,
-    59.8,
-    42.7
-   ],
-   "roads_km": {
-    "QL.4C | Quốc lộ 4C": 68.9,
-    " | ": 37.8,
-    "ĐT.176 | Đường tỉnh 176": 35.1,
-    "TL176 | TL 176": 4.6,
-    "QL.4C | Đường 19 Tháng 8": 1.8,
-    "ĐT.176 | Đường Nguyễn Thị Minh Khai": 1.0
-   }
+  {
+   "leg": 0,
+   "km": 1.52,
+   "mode": "driving",
+   "name": "",
+   "ref": null,
+   "type": "fork",
+   "at": [
+    23.23721,
+    105.46794
+   ]
   },
-  "tatnga_mauque": {
-   "via": [
-    "dongvan",
-    "mapileng",
-    "meovac",
-    "tatnga",
-    "mauque",
-    "dugia"
-   ],
-   "km": 138.3,
-   "osrm_h": 5.04,
-   "legs_km": [
-    11.3,
-    10.9,
-    31.2,
-    42.2,
-    42.7
-   ],
-   "roads_km": {
-    " | ": 77.1,
-    "QL.4C | Quốc lộ 4C": 34.5,
-    "ĐT.176 | Đường tỉnh 176": 20.2,
-    "TL176 | TL 176": 4.6,
-    "QL.4C | Đường 19 Tháng 8": 1.8
-   }
+  {
+   "leg": 0,
+   "km": 0.99,
+   "mode": "driving",
+   "name": "",
+   "ref": null,
+   "type": "turn",
+   "at": [
+    23.2435,
+    105.46134
+   ]
   },
-  "khauvai_niemson_mauque": {
-   "via": [
-    "dongvan",
-    "mapileng",
-    "meovac",
-    "khauvai",
-    "niemson",
-    "mauque",
-    "dugia"
-   ],
-   "km": 188.3,
-   "osrm_h": 4.61,
-   "legs_km": [
-    11.3,
-    10.9,
-    18.8,
-    44.8,
-    59.8,
-    42.7
-   ],
-   "roads_km": {
-    "QL.4C | Quốc lộ 4C": 68.9,
-    " | ": 46.4,
-    "ĐT.176 | Đường tỉnh 176": 35.1,
-    " | TL 217": 30.3,
-    "TL176 | TL 176": 4.6,
-    "QL.4C | Đường 19 Tháng 8": 1.8,
-    "ĐT.176 | Đường Nguyễn Thị Minh Khai": 1.0
-   }
+  {
+   "leg": 0,
+   "km": 0.02,
+   "mode": "driving",
+   "name": "",
+   "ref": null,
+   "type": "turn",
+   "at": [
+    23.24598,
+    105.46957
+   ]
   },
-  "sungmang_lungphin": {
-   "via": [
-    "dongvan",
-    "mapileng",
-    "meovac",
-    "sungmang",
-    "lungphin",
-    "mauque",
-    "dugia"
-   ],
-   "km": 102.9,
-   "osrm_h": 3.0,
-   "legs_km": [
-    11.3,
-    10.9,
-    13.7,
-    6.3,
-    17.9,
-    42.7
-   ],
-   "roads_km": {
-    " | ": 39.9,
-    "ĐT.176 | Đường tỉnh 176": 35.1,
-    "QL.4C | Quốc lộ 4C": 20.4,
-    "TL176 | TL 176": 4.6,
-    "QL.4C | Đường 19 Tháng 8": 1.8,
-    "ĐT.176 | Đường Nguyễn Thị Minh Khai": 1.0
-   }
+  {
+   "leg": 0,
+   "km": 0.0,
+   "mode": "driving",
+   "name": "",
+   "ref": null,
+   "type": "arrive",
+   "at": [
+    23.24617,
+    105.4697
+   ]
+  },
+  {
+   "leg": 1,
+   "km": 0.0,
+   "mode": "driving",
+   "name": "",
+   "ref": null,
+   "type": "depart",
+   "at": [
+    23.24617,
+    105.4697
+   ]
+  },
+  {
+   "leg": 1,
+   "km": 0.03,
+   "mode": "driving",
+   "name": "",
+   "ref": null,
+   "type": "continue",
+   "at": [
+    23.24617,
+    105.46972
+   ]
+  },
+  {
+   "leg": 1,
+   "km": 10.43,
+   "mode": "driving",
+   "name": "",
+   "ref": null,
+   "type": "turn",
+   "at": [
+    23.24598,
+    105.46957
+   ]
+  },
+  {
+   "leg": 1,
+   "km": 0.45,
+   "mode": "driving",
+   "name": "",
+   "ref": null,
+   "type": "new name",
+   "at": [
+    23.22046,
+    105.46255
+   ]
+  },
+  {
+   "leg": 1,
+   "km": 0.27,
+   "mode": "driving",
+   "name": "",
+   "ref": null,
+   "type": "turn",
+   "at": [
+    23.21958,
+    105.46199
+   ]
+  },
+  {
+   "leg": 1,
+   "km": 1.1,
+   "mode": "driving",
+   "name": "",
+   "ref": null,
+   "type": "new name",
+   "at": [
+    23.22153,
+    105.46081
+   ]
+  },
+  {
+   "leg": 1,
+   "km": 3.17,
+   "mode": "driving",
+   "name": "",
+   "ref": null,
+   "type": "turn",
+   "at": [
+    23.22367,
+    105.45582
+   ]
+  },
+  {
+   "leg": 1,
+   "km": 2.55,
+   "mode": "driving",
+   "name": "",
+   "ref": null,
+   "type": "end of road",
+   "at": [
+    23.2223,
+    105.44778
+   ]
+  },
+  {
+   "leg": 1,
+   "km": 4.76,
+   "mode": "driving",
+   "name": "",
+   "ref": null,
+   "type": "turn",
+   "at": [
+    23.22491,
+    105.43721
+   ]
+  },
+  {
+   "leg": 1,
+   "km": 5.37,
+   "mode": "driving",
+   "name": "Quốc lộ 4C",
+   "ref": "QL.4C",
+   "type": "merge",
+   "at": [
+    23.21008,
+    105.41633
+   ]
+  },
+  {
+   "leg": 1,
+   "km": 0.02,
+   "mode": "driving",
+   "name": "Quốc lộ 4C",
+   "ref": "QL.4C",
+   "type": "roundabout",
+   "at": [
+    23.16413,
+    105.40999
+   ]
+  },
+  {
+   "leg": 1,
+   "km": 0.09,
+   "mode": "driving",
+   "name": "Quốc lộ 4C",
+   "ref": "QL.4C",
+   "type": "exit roundabout",
+   "at": [
+    23.16401,
+    105.40996
+   ]
+  },
+  {
+   "leg": 1,
+   "km": 0.0,
+   "mode": "driving",
+   "name": "Quốc lộ 4C",
+   "ref": "QL.4C",
+   "type": "arrive",
+   "at": [
+    23.16339,
+    105.41051
+   ]
   }
- }
+ ]
 }
