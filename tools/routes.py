@@ -55,30 +55,21 @@ def route(points):
             "roads_km": {k: round(v / 1000, 1) for k, v in sorted(roads.items(), key=lambda kv: -kv[1]) if v > 500}}
 
 
+def steps(points):
+    coords = ";".join(f"{lon},{lat}" for lat, lon in points)
+    r = get("https://router.project-osrm.org/route/v1/driving/" + coords + "?overview=false&steps=true")
+    out = []
+    for i, leg in enumerate(r["routes"][0]["legs"]):
+        for s in leg["steps"]:
+            out.append({"leg": i, "km": round(s["distance"] / 1000, 2), "mode": s.get("mode"), "name": s.get("name"),
+                        "ref": s.get("ref"), "type": s["maneuver"].get("type"),
+                        "at": [round(s["maneuver"]["location"][1], 5), round(s["maneuver"]["location"][0], 5)]})
+    return out
+
+
 def main():
-    pick = dict(FIXED)
-    pick.update({"sonvi": (23.2466, 105.4695), "niemson": (23.0366, 105.421), "tatnga": (23.0869, 105.3662),
-                 "khauvai": (23.1138, 105.4806), "lungphin": (23.1354, 105.2792), "sungmang": (23.1645, 105.3187),
-                 "tusan_dock": (23.23088, 105.42662)})
-    plans = {
-        "base": ["dongvan", "mapileng", "meovac", "mauque", "dugia"],
-        "base_with_boat_road": ["dongvan", "mapileng", "tusan_dock", "mapileng", "meovac", "mauque", "dugia"],
-        "sonvi_out_back": ["dongvan", "mapileng", "meovac", "sonvi", "meovac", "mauque", "dugia"],
-        "sonvi_from_mapileng": ["dongvan", "mapileng", "sonvi", "meovac", "mauque", "dugia"],
-        "sonvi_via_tusan": ["dongvan", "tusan_dock", "sonvi", "meovac", "mauque", "dugia"],
-        "niemson_mauque": ["dongvan", "mapileng", "meovac", "niemson", "mauque", "dugia"],
-        "tatnga_mauque": ["dongvan", "mapileng", "meovac", "tatnga", "mauque", "dugia"],
-        "khauvai_niemson_mauque": ["dongvan", "mapileng", "meovac", "khauvai", "niemson", "mauque", "dugia"],
-        "sungmang_lungphin": ["dongvan", "mapileng", "meovac", "sungmang", "lungphin", "mauque", "dugia"],
-    }
-    out = {"routes": {}}
-    for name, seq in plans.items():
-        try:
-            out["routes"][name] = {"via": seq, **route([pick[s] for s in seq])}
-        except Exception as e:
-            out["routes"][name] = {"via": seq, "error": str(e)}
-        time.sleep(1)
-    print(json.dumps(out, ensure_ascii=False, indent=1))
+    dock, sonvi, meovac = (23.23088, 105.42662), (23.2466, 105.4695), (23.16332, 105.41044)
+    print(json.dumps({"dock_to_sonvi_to_meovac": steps([dock, sonvi, meovac])}, ensure_ascii=False, indent=1))
 
 
 if __name__ == "__main__":
