@@ -1,0 +1,273 @@
+{
+ "geocode": {
+  "Xín Cái": [],
+  "Thượng Phùng": [],
+  "Sơn Vĩ": [
+   {
+    "name": "Xã Sơn Vĩ, Tỉnh Tuyên Quang, Việt Nam",
+    "lat": 23.2466028,
+    "lon": 105.4695338,
+    "type": "administrative",
+    "class": "boundary"
+   }
+  ],
+  "Niêm Sơn": [
+   {
+    "name": "Xã Niêm Sơn, Tỉnh Tuyên Quang, Việt Nam",
+    "lat": 23.0365596,
+    "lon": 105.4210151,
+    "type": "administrative",
+    "class": "boundary"
+   }
+  ],
+  "Lũng Pù": [
+   {
+    "name": "Pù Trừ Lủng, Sủng Là, Xã Sà Phìn, Tỉnh Tuyên Quang, Việt Nam",
+    "lat": 23.2401385,
+    "lon": 105.2141333,
+    "type": "hamlet",
+    "class": "place"
+   }
+  ],
+  "Khâu Vai": [
+   {
+    "name": "Xã Khâu Vai, Tỉnh Tuyên Quang, Việt Nam",
+    "lat": 23.1138379,
+    "lon": 105.4805811,
+    "type": "administrative",
+    "class": "boundary"
+   },
+   {
+    "name": "Khau Vai, Xã Khâu Vai, Tỉnh Tuyên Quang, Việt Nam",
+    "lat": 23.0861656,
+    "lon": 105.4867496,
+    "type": "suburb",
+    "class": "place"
+   }
+  ],
+  "Lũng Phìn": [
+   {
+    "name": "Xã Lũng Phìn, Tỉnh Tuyên Quang, Việt Nam",
+    "lat": 23.135412,
+    "lon": 105.2792054,
+    "type": "administrative",
+    "class": "boundary"
+   }
+  ],
+  "Pải Lủng": [
+   {
+    "name": "Pai Lung Cave, Quốc lộ 4C, Xóm Mới, Sì Phài, Tả Lủng, Xã Đồng Văn, Tỉnh Tuyên Quang, Việt Nam",
+    "lat": 23.2547743,
+    "lon": 105.3867757,
+    "type": "cave_entrance",
+    "class": "natural"
+   }
+  ],
+  "Tát Ngà": [
+   {
+    "name": "Xã Tát Ngà, Tỉnh Tuyên Quang, Việt Nam",
+    "lat": 23.0868802,
+    "lon": 105.3662019,
+    "type": "administrative",
+    "class": "boundary"
+   }
+  ],
+  "Pả Vi": [
+   {
+    "name": "Pa Vi, Quốc lộ 4C, Xã Mèo Vạc, Tỉnh Tuyên Quang, Việt Nam",
+    "lat": 23.2063053,
+    "lon": 105.4166687,
+    "type": "theme_park",
+    "class": "tourism"
+   }
+  ],
+  "Niêm Tòng": [
+   {
+    "name": "Đài tưởng niệm liệt sĩ, Lý Thường Kiệt, Đồng Tâm, Xã Đồng Văn, Tỉnh Tuyên Quang, Việt Nam",
+    "lat": 23.2794007,
+    "lon": 105.3693581,
+    "type": "memorial",
+    "class": "historic"
+   }
+  ],
+  "Nậm Ban": [
+   {
+    "name": "Xã Nam Quang, Tỉnh Cao Bằng, Việt Nam",
+    "lat": 22.919612,
+    "lon": 105.4293496,
+    "type": "administrative",
+    "class": "boundary"
+   },
+   {
+    "name": "Nam Cao, Xã Nam Quang, Tỉnh Cao Bằng, Việt Nam",
+    "lat": 22.9803625,
+    "lon": 105.413724,
+    "type": "suburb",
+    "class": "place"
+   }
+  ],
+  "Sủng Máng": [
+   {
+    "name": "Xã Sủng Máng, Tỉnh Tuyên Quang, Việt Nam",
+    "lat": 23.164516,
+    "lon": 105.3186641,
+    "type": "administrative",
+    "class": "boundary"
+   }
+  ]
+ },
+ "routes": {
+  "base": {
+   "via": [
+    "dongvan",
+    "mapileng",
+    "meovac",
+    "mauque",
+    "dugia"
+   ],
+   "km": 100.7,
+   "osrm_h": 2.9,
+   "legs_km": [
+    11.3,
+    10.9,
+    35.7,
+    42.7
+   ],
+   "roads_km": {
+    " | ": 37.7,
+    "ĐT.176 | Đường tỉnh 176": 35.1,
+    "QL.4C | Quốc lộ 4C": 20.4,
+    "TL176 | TL 176": 4.6,
+    "QL.4C | Đường 19 Tháng 8": 1.8,
+    "ĐT.176 | Đường Nguyễn Thị Minh Khai": 1.0
+   }
+  },
+  "border_xincai_first": {
+   "skipped": [
+    "Xín Cái",
+    "Thượng Phùng"
+   ]
+  },
+  "border_pailung_first": {
+   "skipped": [
+    "Thượng Phùng",
+    "Xín Cái"
+   ]
+  },
+  "border_out_back": {
+   "skipped": [
+    "Xín Cái"
+   ]
+  },
+  "son_vi": {
+   "skipped": [
+    "Thượng Phùng",
+    "Xín Cái"
+   ]
+  },
+  "niem_son": {
+   "via": [
+    "dongvan",
+    "mapileng",
+    "meovac",
+    "Niêm Sơn",
+    "dugia"
+   ],
+   "km": 175.2,
+   "osrm_h": 2.32,
+   "legs_km": [
+    11.3,
+    10.9,
+    24.1,
+    128.9
+   ],
+   "roads_km": {
+    "QL.4C | Quốc lộ 4C": 70.2,
+    "QL.34 | Quốc lộ 34": 66.2,
+    " | TL 176": 36.4,
+    "QL.4C | Đường 19 Tháng 8": 1.8
+   }
+  },
+  "khau_vai_niem_son": {
+   "via": [
+    "dongvan",
+    "mapileng",
+    "meovac",
+    "Khâu Vai",
+    "Niêm Sơn",
+    "dugia"
+   ],
+   "km": 214.2,
+   "osrm_h": 3.44,
+   "legs_km": [
+    11.3,
+    10.9,
+    18.8,
+    44.3,
+    128.9
+   ],
+   "roads_km": {
+    "QL.4C | Quốc lộ 4C": 70.2,
+    "QL.34 | Quốc lộ 34": 66.2,
+    " | TL 176": 36.4,
+    " | TL 217": 30.3,
+    " | ": 9.1,
+    "QL.4C | Đường 19 Tháng 8": 1.8
+   }
+  },
+  "lung_pu_niem_son": {
+   "via": [
+    "dongvan",
+    "mapileng",
+    "meovac",
+    "Lũng Pù",
+    "Niêm Sơn",
+    "dugia"
+   ],
+   "km": 267.0,
+   "osrm_h": 3.58,
+   "legs_km": [
+    11.3,
+    10.9,
+    46.6,
+    69.2,
+    128.9
+   ],
+   "roads_km": {
+    "QL.4C | Quốc lộ 4C": 147.8,
+    "QL.34 | Quốc lộ 34": 66.2,
+    " | TL 176": 36.4,
+    " | ": 6.1,
+    "QL.4C | Đường 19 Tháng 8": 5.3,
+    "QL.4C | Đường 3 Tháng 2": 4.9
+   }
+  },
+  "niem_son_mauque": {
+   "via": [
+    "dongvan",
+    "mapileng",
+    "meovac",
+    "Niêm Sơn",
+    "mauque",
+    "dugia"
+   ],
+   "km": 149.3,
+   "osrm_h": 3.49,
+   "legs_km": [
+    11.3,
+    10.9,
+    24.6,
+    59.8,
+    42.7
+   ],
+   "roads_km": {
+    "QL.4C | Quốc lộ 4C": 68.9,
+    " | ": 37.8,
+    "ĐT.176 | Đường tỉnh 176": 35.1,
+    "TL176 | TL 176": 4.6,
+    "QL.4C | Đường 19 Tháng 8": 1.8,
+    "ĐT.176 | Đường Nguyễn Thị Minh Khai": 1.0
+   }
+  }
+ }
+}
