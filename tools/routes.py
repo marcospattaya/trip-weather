@@ -6,6 +6,7 @@ Open-Meteo elevation API (Copernicus 90 m DEM) for each sample. Prints JSON.
 """
 import json
 import math
+import sys
 import time
 import urllib.request
 
@@ -15,10 +16,29 @@ STOPS = [("dongvan", 23.27967, 105.36078), ("mapileng", 23.24062, 105.41208), ("
          ("mauque", 23.06559, 105.23774), ("dugia", 22.9292, 105.2268)]
 
 
-def get(url):
-    req = urllib.request.Request(url, headers={"User-Agent": UA})
-    with urllib.request.urlopen(req, timeout=90) as r:
-        return json.loads(r.read().decode("utf-8"))
+def get(url, tries=4, timeout=30):
+    for n in range(tries):
+        try:
+            req = urllib.request.Request(url, headers={"User-Agent": UA})
+            with urllib.request.urlopen(req, timeout=timeout) as r:
+                return json.loads(r.read().decode("utf-8"))
+        except Exception as ex:  # noqa: BLE001
+            print(f"try {n + 1} failed for {url[:70]}: {ex}", file=sys.stderr)
+            if n == tries - 1:
+                raise
+            time.sleep(5 * 2 ** n)
+
+
+def elevations(chunk):
+    """Open-Meteo (Copernicus 90 m) first, OpenTopoData SRTM 90 m if it keeps failing."""
+    lat = ",".join(f"{p[1][0]:.5f}" for p in chunk)
+    lon = ",".join(f"{p[1][1]:.5f}" for p in chunk)
+    try:
+        return get(f"https://api.open-meteo.com/v1/elevation?latitude={lat}&longitude={lon}", tries=3)["elevation"], "open-meteo"
+    except Exception:  # noqa: BLE001
+        locs = "|".join(f"{p[1][0]:.5f},{p[1][1]:.5f}" for p in chunk)
+        r = get(f"https://api.opentopodata.org/v1/srtm90m?locations={locs}", tries=3)
+        return [x["elevation"] for x in r["results"]], "opentopodata"
 
 
 def hav(a, b):
@@ -46,18 +66,20 @@ def main():
             nxt += step
         dist += seg
     samples.append((dist, line[-1]))
-    elev = []
+    print(f"route {rt['distance'] / 1000:.1f} km, {len(samples)} samples", file=sys.stderr)
+    elev, srcs = [], []
     for i in range(0, len(samples), 100):
         chunk = samples[i:i + 100]
-        lat = ",".join(f"{p[1][0]:.5f}" for p in chunk)
-        lon = ",".join(f"{p[1][1]:.5f}" for p in chunk)
-        e = get(f"https://api.open-meteo.com/v1/elevation?latitude={lat}&longitude={lon}")
-        elev += e["elevation"]
-        time.sleep(1)
+        e, src = elevations(chunk)
+        print(f"chunk {i // 100}: {len(e)} points from {src}", file=sys.stderr)
+        elev += e
+        srcs.append(src)
+        time.sleep(1.5)
     print(json.dumps({
         "km": round(rt["distance"] / 1000, 1), "osrm_h": round(rt["duration"] / 3600, 2),
         "legs_km": [round(l["distance"] / 1000, 1) for l in rt["legs"]],
         "stops": [s[0] for s in STOPS],
+        "elev_sources": srcs,
         "line": [[round(a, 5), round(b, 5)] for a, b in line],
         "profile": [[round(k, 2), round(z)] for (k, _), z in zip(samples, elev)],
     }))
