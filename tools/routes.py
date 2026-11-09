@@ -56,27 +56,23 @@ def route(points):
 
 
 def main():
-    geo = {p: geocode(p) for p in PLACES}
     pick = dict(FIXED)
-    for p, hits in geo.items():
-        if isinstance(hits, list) and hits:
-            pick[p] = (hits[0]["lat"], hits[0]["lon"])
+    pick.update({"sonvi": (23.2466, 105.4695), "niemson": (23.0366, 105.421), "tatnga": (23.0869, 105.3662),
+                 "khauvai": (23.1138, 105.4806), "lungphin": (23.1354, 105.2792), "sungmang": (23.1645, 105.3187),
+                 "tusan_dock": (23.23088, 105.42662)})
     plans = {
         "base": ["dongvan", "mapileng", "meovac", "mauque", "dugia"],
-        "border_xincai_first": ["dongvan", "mapileng", "meovac", "Xín Cái", "Thượng Phùng", "mapileng", "meovac", "mauque", "dugia"],
-        "border_pailung_first": ["dongvan", "Pải Lủng", "Thượng Phùng", "Xín Cái", "meovac", "mauque", "dugia"],
-        "border_out_back": ["dongvan", "mapileng", "meovac", "Xín Cái", "meovac", "mauque", "dugia"],
-        "son_vi": ["dongvan", "Sơn Vĩ", "Thượng Phùng", "Xín Cái", "meovac", "mauque", "dugia"],
-        "niem_son": ["dongvan", "mapileng", "meovac", "Niêm Sơn", "dugia"],
-        "khau_vai_niem_son": ["dongvan", "mapileng", "meovac", "Khâu Vai", "Niêm Sơn", "dugia"],
-        "lung_pu_niem_son": ["dongvan", "mapileng", "meovac", "Lũng Pù", "Niêm Sơn", "dugia"],
-        "niem_son_mauque": ["dongvan", "mapileng", "meovac", "Niêm Sơn", "mauque", "dugia"],
+        "base_with_boat_road": ["dongvan", "mapileng", "tusan_dock", "mapileng", "meovac", "mauque", "dugia"],
+        "sonvi_out_back": ["dongvan", "mapileng", "meovac", "sonvi", "meovac", "mauque", "dugia"],
+        "sonvi_from_mapileng": ["dongvan", "mapileng", "sonvi", "meovac", "mauque", "dugia"],
+        "sonvi_via_tusan": ["dongvan", "tusan_dock", "sonvi", "meovac", "mauque", "dugia"],
+        "niemson_mauque": ["dongvan", "mapileng", "meovac", "niemson", "mauque", "dugia"],
+        "tatnga_mauque": ["dongvan", "mapileng", "meovac", "tatnga", "mauque", "dugia"],
+        "khauvai_niemson_mauque": ["dongvan", "mapileng", "meovac", "khauvai", "niemson", "mauque", "dugia"],
+        "sungmang_lungphin": ["dongvan", "mapileng", "meovac", "sungmang", "lungphin", "mauque", "dugia"],
     }
-    out = {"geocode": geo, "routes": {}}
+    out = {"routes": {}}
     for name, seq in plans.items():
-        if any(s not in pick for s in seq):
-            out["routes"][name] = {"skipped": [s for s in seq if s not in pick]}
-            continue
         try:
             out["routes"][name] = {"via": seq, **route([pick[s] for s in seq])}
         except Exception as e:
