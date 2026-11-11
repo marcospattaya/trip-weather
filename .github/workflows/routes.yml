@@ -3,7 +3,7 @@ name: Route options
 on:
   push:
     branches: [main]
-    paths: ["tools/routes.py", "tools/loop.py", "tools/day4.py", "tools/d4_profile.py", ".github/workflows/routes.yml"]
+    paths: ["tools/routes.py", "tools/loop.py", "tools/day4.py", "tools/d4_profile.py", "tools/osm_extra.py", ".github/workflows/routes.yml"]
   workflow_dispatch:
 
 permissions:
@@ -20,12 +20,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Work out the options
-        run: python3 tools/d4_profile.py > tools/d4_profile_out.json
+        run: python3 tools/osm_extra.py > tools/osm_extra_out.json
       - name: Save them
         run: |
           git config user.name "trip-weather"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add tools/d4_profile_out.json
+          git add tools/osm_extra_out.json
           git diff --cached --quiet && exit 0
           git commit -m "Route options $(date -u +%Y-%m-%dT%H:%MZ)"
           git pull --rebase -q
