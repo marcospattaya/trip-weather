@@ -1,5 +1,5 @@
 {
-  "active": true,
+  "active": false,
   "timezone": "Asia/Bangkok",
   "forecast_days": 8,
   "hourly": ["temperature_2m", "precipitation"],
